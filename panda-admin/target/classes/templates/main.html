@@ -16,45 +16,18 @@
 <div class="row  border-bottom white-bg dashboard-header">
 	<div class="col-sm-12">
 		<blockquote class="text-warning" style="font-size:14px">
-			E学习更快乐 Springboot权限框架系统，
+			Springboot权限框架系统
 			<br><a target="_blank" href="https://www.oschina.net/project/top_cn_2018?sort=1"></a>
-			<h4 class="text-danger">系统不断升级更新中， 唯一购买地址, 点击购买。</h4>
+			<h4 class="text-danger">有小伙伴有兴趣可以交流交流</h4>
 		</blockquote>
 
 		<hr>
 	</div>
 	<div class="col-sm-3">
-		<h2>Hello,Guest</h2>
-		<small>移动设备访问请扫描以下二维码：</small>
-		<br>
-		<br>
-		<img th:src="@{/img/qr_code.png}" width="100%" style="max-width:264px;">
-		<br>
-	</div>
-	<div class="col-sm-5">
+		<h2>Hello,小白</h2>
 		<h2>熊猫后台管理框架</h2>
-		<p>一直想做一款后台管理系统，看了很多优秀的开源项目但是发现没有合适自己的。于是利用空闲休息时间开始自己写一套后台系统。如此有了熊猫管理系统。
-			她可以用于所有的Web应用程序，如<b>网站管理后台</b>，<b>网站会员中心</b>，<b>CMS</b>，<b>CRM</b>，<b>OA</b>等等，
-			当然，您也可以对她进行深度定制，以做出更强系统。所有前端后台代码封装过后十分精简易上手，出错概率低。同时支持移动客户端访问。
-			系统会陆续更新一些实用功能。</p>
-		<p>
-			<b>当前版本：</b><span>v[[${version}]]</span>
-		</p>
-		<p>
-			<span class="label label-warning">&yen;有你的支持，期待你的关注和帮助。</span>
-		</p>
-		<br>
-		<p>
-			<a class="btn btn-success btn-outline" href="https://gitee.com/y_project/panda" target="_blank">
-				<i class="fa fa-cloud"> </i> 访问淘宝
-			</a>
-			<a class="btn btn-white btn-bitbucket" href="http://dev.ehongqi.cn:8080/panda" target="_blank">
-				<i class="fa fa-home"></i> 访问主页
-			</a>
-		</p>
-	</div>
-	<div class="col-sm-4">
-		<h4>技术选型：</h4>
+		<b>当前版本：</b><span>v[[${version}]]</span>
+		<h4>目前所用的的技术选型：</h4>
 		<ol>
 			<li>核心框架：Spring Boot。</li>
 			<li>安全框架：Apache Shiro。</li>
@@ -65,10 +38,39 @@
 			<li>工具类：Fastjson。</li>
 			<li>更多……</li>
 		</ol>
+		</p>
+		<small>技术交流请扫描以下二维码：</small>
+		<br>
+		<br>
+		<img th:src="@{/img/qr_code.png}" width="100%" style="max-width:264px;">
+		<br>
+	</div>
+	<div class="col-sm-5">
+		<div class="ibox float-e-margins">
+			<div class="ibox-title">
+				<h5>捐赠</h5>
+			</div>
+			<div class="ibox-content">
+				<div class="alert alert-warning">
+					请作者喝杯咖啡。
+				</div>
+				<p id="pay-qrcode">
+					<a href="javascript:;"><img th:src="@{/img/pay.png}" width="100%" alt="请使用手机支付宝或者微信扫码支付">
+					</a>
+				</p>
+
+			</div>
+		</div>
+		<!--<br>
+		<p>
+			<a class="btn btn-white btn-bitbucket" href="http://dev.ehongqi.cn:8080/panda" target="_blank">
+				<i class="fa fa-home"></i> 访问主页
+			</a>
+		</p>-->
 	</div>
 
 </div>
-<div class="wrapper wrapper-content">
+<!--<div class="wrapper wrapper-content">
 	<div class="row">
 		<div class="col-sm-4">
 
@@ -78,15 +80,15 @@
 
 				</div>
 				<div class="ibox-content">
-					<p><i class="fa fa-send-o"></i> 开发官网：<a href="http://dev.ehongqi.cn" target="_blank">http://dev.ehongqi.cn</a>
-					</p>
-					<!--<p><i class="fa fa-qq"></i> QQ<s>满</s> <a href="https://jq.qq.com/?_wv=1027&k=5cHeRVW" target="_blank"></a>
-                    </p>-->
+					&lt;!&ndash;<p><i class="fa fa-send-o"></i> 开发官网：<a href="http://dev.ehongqi.cn" target="_blank">http://dev.ehongqi.cn</a>
+					</p>&ndash;&gt;
+					&lt;!&ndash;<p><i class="fa fa-qq"></i> QQ<s>满</s> <a href="https://jq.qq.com/?_wv=1027&k=5cHeRVW" target="_blank"></a>
+                    </p>&ndash;&gt;
 
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-4">
+		&lt;!&ndash;<div class="col-sm-4">
 			<div class="ibox float-e-margins">
 				<div class="ibox-title">
 					<h5>更新日志</h5>
@@ -555,26 +557,12 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>&ndash;&gt;
 		<div class="col-sm-4">
-			<div class="ibox float-e-margins">
-				<div class="ibox-title">
-					<h5>捐赠</h5>
-				</div>
-				<div class="ibox-content">
-					<div class="alert alert-warning">
-						请作者喝杯咖啡。
-					</div>
-					<p id="pay-qrcode">
-						<a href="javascript:;"><img th:src="@{/img/pay.png}" width="100%" alt="请使用手机支付宝或者微信扫码支付">
-						</a>
-					</p>
 
-				</div>
-			</div>
 		</div>
 	</div>
-</div>
+</div>-->
 <script th:src="@{/js/jquery.min.js}"></script>
 <script th:src="@{/js/bootstrap.min.js}"></script>
 </body>
