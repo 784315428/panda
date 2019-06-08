@@ -8,6 +8,7 @@
         <version>3.3</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <!-- 默认打包成jar,需要打包成war改成war即可 -->
 	<packaging>jar</packaging>
     <artifactId>panda-admin</artifactId>
 	
@@ -23,11 +24,12 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
-        <!-- spring-boot-devtools -->
+        <!-- spring-boot-devtools 热部署-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional> <!-- 表示依赖不会传递 -->
+            <scope>true</scope>
 		</dependency>
 
 		<!-- swagger2-->
@@ -74,7 +76,10 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-					<fork>true</fork> <!-- 如果没有该配置，devtools不会生效 -->
+					<fork>true</fork> <!-- 如果没有该配置，devtools热部署不会生效 -->
+                    <!-- 指定该Main Class为全局的唯一入口 -->
+                    <mainClass>com.panda.PandaApplication</mainClass>
+                    <layout>ZIP</layout>
 				</configuration>
                 <executions>
                     <execution>
@@ -94,7 +99,8 @@
                 </configuration>   
 		   </plugin>   
         </plugins>
-        <finalName>${artifactId}</finalName>
+        <!-- 不写默认项目名加版本号 -->
+        <finalName>${artifactId}-${modelVersion}</finalName>
     </build>
 	
 </project>

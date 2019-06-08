@@ -20,11 +20,11 @@ public class PandaApplication
 
             // System.setProperty("spring.devtools.restart.enabled", "false");
             SpringApplication.run(PandaApplication.class, args);
-            System.out.println("(♥◠‿◠)ﾉﾞ  Panda启动成功   ლ(´ڡ`ლ)ﾞ  \n" +
-                    "            疯狂源于梦想       \n" +
-                    "            技术成就辉煌       \n" +
-                    "            朱琨琨 更快乐       \n" +
-                    " http://dev.ehongqi.cn:8080/PandaFrame \n" +
+            System.out.println("(♥◠‿◠)ﾉﾞ  恭喜你   Panda启动成功   ♥◠‿◠)ﾞ  \n" +
+                    "            欢迎使用熊猫系统       \n" +
+                    "            看到你努力的样子       \n" +
+                    "            小熊猫也很高兴呀       \n" +
+                    " http://localhost/index \n" +
 
                     "--------------------------------------  ");
 

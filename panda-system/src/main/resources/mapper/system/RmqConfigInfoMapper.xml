@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.panda.system.mapper.RmqConfigInfoMapper">
+    
+    <resultMap type="RmqConfigInfo" id="RmqConfigInfoResult">
+        <result property="id"    column="id"    />
+        <result property="topic"    column="topic"    />
+        <result property="namesrv"    column="namesrv"    />
+        <result property="cgroup"    column="cgroup"    />
+        <result property="tag"    column="tag"    />
+        <result property="field"    column="field"    />
+        <result property="clustor"    column="clustor"    />
+        <result property="consumerWarName"    column="consumer_war_name"    />
+        <result property="produerWarName"    column="produer_war_name"    />
+        <result property="topicHoldEmpCode"    column="topic_hold_emp_code"    />
+        <result property="topicHoldEmpName"    column="topic_hold_emp_name"    />
+        <result property="produerDevopsEmpCode"    column="produer_devops_emp_code"    />
+        <result property="produerDevopsEmpName"    column="produer_devops_emp_name"    />
+        <result property="consumerDevopsEmpCode"    column="consumer_devops_emp_code"    />
+        <result property="consumerDevopsEmpName"    column="consumer_devops_emp_name"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="modifyTime"    column="modify_time"    />
+    </resultMap>
+	
+	<sql id="selectRmqConfigInfoVo">
+        select id, topic, namesrv, cgroup, tag, field, clustor, consumer_war_name, produer_war_name, topic_hold_emp_code, topic_hold_emp_name, produer_devops_emp_code, produer_devops_emp_name, consumer_devops_emp_code, consumer_devops_emp_name, create_time, modify_time from rmq_config_info
+    </sql>
+	
+    <select id="selectRmqConfigInfoList" parameterType="RmqConfigInfo" resultMap="RmqConfigInfoResult">
+        <include refid="selectRmqConfigInfoVo"/>
+        <where>  
+            <if test="id != null "> and id = #{id}</if>
+             <if test="topic != null  and topic != '' "> and topic = #{topic}</if>
+             <if test="namesrv != null  and namesrv != '' "> and namesrv = #{namesrv}</if>
+             <if test="cgroup != null  and cgroup != '' "> and cgroup = #{cgroup}</if>
+             <if test="tag != null  and tag != '' "> and tag = #{tag}</if>
+             <if test="field != null  and field != '' "> and field = #{field}</if>
+             <if test="clustor != null  and clustor != '' "> and clustor = #{clustor}</if>
+             <if test="consumerWarName != null  and consumerWarName != '' "> and consumer_war_name = #{consumerWarName}</if>
+             <if test="produerWarName != null  and produerWarName != '' "> and produer_war_name = #{produerWarName}</if>
+             <if test="topicHoldEmpCode != null  and topicHoldEmpCode != '' "> and topic_hold_emp_code = #{topicHoldEmpCode}</if>
+             <if test="topicHoldEmpName != null  and topicHoldEmpName != '' "> and topic_hold_emp_name = #{topicHoldEmpName}</if>
+             <if test="produerDevopsEmpCode != null  and produerDevopsEmpCode != '' "> and produer_devops_emp_code = #{produerDevopsEmpCode}</if>
+             <if test="produerDevopsEmpName != null  and produerDevopsEmpName != '' "> and produer_devops_emp_name = #{produerDevopsEmpName}</if>
+             <if test="consumerDevopsEmpCode != null  and consumerDevopsEmpCode != '' "> and consumer_devops_emp_code = #{consumerDevopsEmpCode}</if>
+             <if test="consumerDevopsEmpName != null  and consumerDevopsEmpName != '' "> and consumer_devops_emp_name = #{consumerDevopsEmpName}</if>
+             <if test="createTime != null "> and create_time = #{createTime}</if>
+             <if test="modifyTime != null "> and modify_time = #{modifyTime}</if>
+         </where>
+    </select>
+    
+    <select id="selectRmqConfigInfoById" parameterType="Integer" resultMap="RmqConfigInfoResult">
+        <include refid="selectRmqConfigInfoVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertRmqConfigInfo" parameterType="RmqConfigInfo" useGeneratedKeys="true" keyProperty="id">
+        insert into rmq_config_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="topic != null  and topic != ''  ">topic,</if>
+			<if test="namesrv != null  and namesrv != ''  ">namesrv,</if>
+			<if test="cgroup != null  and cgroup != ''  ">cgroup,</if>
+			<if test="tag != null  and tag != ''  ">tag,</if>
+			<if test="field != null  and field != ''  ">field,</if>
+			<if test="clustor != null  and clustor != ''  ">clustor,</if>
+			<if test="consumerWarName != null  and consumerWarName != ''  ">consumer_war_name,</if>
+			<if test="produerWarName != null  and produerWarName != ''  ">produer_war_name,</if>
+			<if test="topicHoldEmpCode != null  and topicHoldEmpCode != ''  ">topic_hold_emp_code,</if>
+			<if test="topicHoldEmpName != null  and topicHoldEmpName != ''  ">topic_hold_emp_name,</if>
+			<if test="produerDevopsEmpCode != null  and produerDevopsEmpCode != ''  ">produer_devops_emp_code,</if>
+			<if test="produerDevopsEmpName != null  and produerDevopsEmpName != ''  ">produer_devops_emp_name,</if>
+			<if test="consumerDevopsEmpCode != null  and consumerDevopsEmpCode != ''  ">consumer_devops_emp_code,</if>
+			<if test="consumerDevopsEmpName != null  and consumerDevopsEmpName != ''  ">consumer_devops_emp_name,</if>
+			<if test="createTime != null  ">create_time,</if>
+			<if test="modifyTime != null  ">modify_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="topic != null  and topic != ''  ">#{topic},</if>
+			<if test="namesrv != null  and namesrv != ''  ">#{namesrv},</if>
+			<if test="cgroup != null  and cgroup != ''  ">#{cgroup},</if>
+			<if test="tag != null  and tag != ''  ">#{tag},</if>
+			<if test="field != null  and field != ''  ">#{field},</if>
+			<if test="clustor != null  and clustor != ''  ">#{clustor},</if>
+			<if test="consumerWarName != null  and consumerWarName != ''  ">#{consumerWarName},</if>
+			<if test="produerWarName != null  and produerWarName != ''  ">#{produerWarName},</if>
+			<if test="topicHoldEmpCode != null  and topicHoldEmpCode != ''  ">#{topicHoldEmpCode},</if>
+			<if test="topicHoldEmpName != null  and topicHoldEmpName != ''  ">#{topicHoldEmpName},</if>
+			<if test="produerDevopsEmpCode != null  and produerDevopsEmpCode != ''  ">#{produerDevopsEmpCode},</if>
+			<if test="produerDevopsEmpName != null  and produerDevopsEmpName != ''  ">#{produerDevopsEmpName},</if>
+			<if test="consumerDevopsEmpCode != null  and consumerDevopsEmpCode != ''  ">#{consumerDevopsEmpCode},</if>
+			<if test="consumerDevopsEmpName != null  and consumerDevopsEmpName != ''  ">#{consumerDevopsEmpName},</if>
+			<if test="createTime != null  ">#{createTime},</if>
+			<if test="modifyTime != null  ">#{modifyTime},</if>
+         </trim>
+    </insert>
+	 
+    <update id="updateRmqConfigInfo" parameterType="RmqConfigInfo">
+        update rmq_config_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="topic != null  and topic != ''  ">topic = #{topic},</if>
+            <if test="namesrv != null  and namesrv != ''  ">namesrv = #{namesrv},</if>
+            <if test="cgroup != null  and cgroup != ''  ">cgroup = #{cgroup},</if>
+            <if test="tag != null  and tag != ''  ">tag = #{tag},</if>
+            <if test="field != null  and field != ''  ">field = #{field},</if>
+            <if test="clustor != null  and clustor != ''  ">clustor = #{clustor},</if>
+            <if test="consumerWarName != null  and consumerWarName != ''  ">consumer_war_name = #{consumerWarName},</if>
+            <if test="produerWarName != null  and produerWarName != ''  ">produer_war_name = #{produerWarName},</if>
+            <if test="topicHoldEmpCode != null  and topicHoldEmpCode != ''  ">topic_hold_emp_code = #{topicHoldEmpCode},</if>
+            <if test="topicHoldEmpName != null  and topicHoldEmpName != ''  ">topic_hold_emp_name = #{topicHoldEmpName},</if>
+            <if test="produerDevopsEmpCode != null  and produerDevopsEmpCode != ''  ">produer_devops_emp_code = #{produerDevopsEmpCode},</if>
+            <if test="produerDevopsEmpName != null  and produerDevopsEmpName != ''  ">produer_devops_emp_name = #{produerDevopsEmpName},</if>
+            <if test="consumerDevopsEmpCode != null  and consumerDevopsEmpCode != ''  ">consumer_devops_emp_code = #{consumerDevopsEmpCode},</if>
+            <if test="consumerDevopsEmpName != null  and consumerDevopsEmpName != ''  ">consumer_devops_emp_name = #{consumerDevopsEmpName},</if>
+            <if test="createTime != null  ">create_time = #{createTime},</if>
+            <if test="modifyTime != null  ">modify_time = #{modifyTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+	<delete id="deleteRmqConfigInfoById" parameterType="Integer">
+        delete from rmq_config_info where id = #{id}
+    </delete>
+	
+    <delete id="deleteRmqConfigInfoByIds" parameterType="String">
+        delete from rmq_config_info where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>

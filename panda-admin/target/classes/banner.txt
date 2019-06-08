@@ -1,12 +1,9 @@
-
-Application Version: ${panda.version}
-Spring Boot Version: ${spring-boot.version}
 ${AnsiColor.BRIGHT_CYAN}
 
                             /$$       /$$
                            | $$      | $$
-                 /$$$$$$$$ | $$  /$$ | $$    /$$
-                |____ /$$/ | $$ /$$/ | $$  /$$/
+                 /$$$$$$$$ | $$  /$$ | $$  /$$
+                |____ /$$/ | $$ /$$/ | $$ /$$/
                     /$$$$/ | $$$$$/  | $$$$$/
                    /$$__/  | $$_ $$  | $$_ $$
                  /$$$$$$$$ | $$ \ $$ | $$ \ $$
@@ -33,9 +30,5 @@ ${AnsiColor.BRIGHT_CYAN}
 //      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        //
 //             熊猫保佑       永不宕机      永无BUG               //
 ////////////////////////////////////////////////////////////////////
-
-
-
-
-
+Application Version: ${panda.version}        Spring Boot Version: ${spring-boot.version}
 
