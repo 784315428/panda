@@ -1,8 +1,10 @@
 package com.panda.web.controller.system;
 
+import java.util.Date;
 import java.util.List;
 
 import com.panda.framework.util.ShiroUtils;
+import com.panda.system.service.ISysDictDataService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,7 +37,8 @@ public class RmqConfigInfoController extends BaseController
 	
 	@Autowired
 	private IRmqConfigInfoService rmqConfigInfoService;
-	
+	@Autowired
+	private ISysDictDataService dictDataService;
 	@RequiresPermissions("system:rmqConfigInfo:view")
 	@GetMapping()
 	public String rmqConfigInfo()
@@ -88,9 +91,28 @@ public class RmqConfigInfoController extends BaseController
 	@ResponseBody
 	public AjaxResult addSave(RmqConfigInfo rmqConfigInfo)
 	{
+
 		rmqConfigInfo.setTopicHoldEmpCode(ShiroUtils.getLoginName());
 		rmqConfigInfo.setTopicHoldEmpName(ShiroUtils.getSysUser().getUserName());
+		rmqConfigInfo.setCreateTime(new Date());
+		rmqConfigInfo.setModifyTime(new Date());
+		rmqConfigInfo.setNamesrv(dictDataService.selectDictLabel("clustor_namesrv",rmqConfigInfo.getClustor()));
+		if(!checkRmq(rmqConfigInfo)){
+			return error("topic或者cgroup命名不规范");
+		}
 		return toAjax(rmqConfigInfoService.insertRmqConfigInfo(rmqConfigInfo));
+	}
+
+	public boolean  checkRmq(RmqConfigInfo rmqConfigInfo){
+		if(!rmqConfigInfo.getCgroup().endsWith("_CGROUP")){
+			return false;
+		}
+		if(!rmqConfigInfo.getTopic().startsWith("MARKET")
+			|| !rmqConfigInfo.getTopic().endsWith("PRODUCER")
+		){
+			return false;
+		}
+		return true;
 	}
 
 	/**
@@ -113,6 +135,11 @@ public class RmqConfigInfoController extends BaseController
 	@ResponseBody
 	public AjaxResult editSave(RmqConfigInfo rmqConfigInfo)
 	{
+		if(!checkRmq(rmqConfigInfo)){
+			return error("topic或者cgroup命名不规范");
+		}
+		rmqConfigInfo.setModifyTime(new Date());
+		rmqConfigInfo.setNamesrv(dictDataService.selectDictLabel("clustor_namesrv",rmqConfigInfo.getClustor()));
 		return toAjax(rmqConfigInfoService.updateRmqConfigInfo(rmqConfigInfo));
 	}
 	

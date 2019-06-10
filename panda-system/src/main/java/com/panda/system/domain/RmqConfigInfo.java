@@ -47,6 +47,31 @@ public class RmqConfigInfo extends BaseEntity
 	private String consumerDevopsEmpName;
 	/** 修改时间 */
 	private Date modifyTime;
+	/** 修改时间 */
+	private Date createTime;
+	/** 主题持有者工号 */
+	private String consumerHoldEmpCode;
+	/** 主题持有者名字 */
+	private String consumerHoldEmpName;
+
+
+	public String getConsumerHoldEmpCode()
+	{
+		return consumerHoldEmpCode;
+	}
+	public void setConsumerHoldEmpCode(String consumerHoldEmpCode)
+	{
+		this.consumerHoldEmpCode = consumerHoldEmpCode;
+	}
+
+	public String getConsumerHoldEmpName()
+	{
+		return consumerHoldEmpName;
+	}
+	public void setConsumerHoldEmpName(String consumerHoldEmpName)
+	{
+		this.consumerHoldEmpName = consumerHoldEmpName;
+	}
 
 	public void setId(Integer id) 
 	{
@@ -191,6 +216,16 @@ public class RmqConfigInfo extends BaseEntity
 	public Date getModifyTime() 
 	{
 		return modifyTime;
+	}
+
+	public Date getCreateTime()
+	{
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime)
+	{
+		this.createTime = createTime;
 	}
 
     public String toString() {

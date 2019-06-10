@@ -16,58 +16,51 @@
 							</li>
 
 							<li>
-								namesrv：<input type="text" name="namesrv"/>
-							</li>
-
-							<li>
 								消费组：<input type="text" name="cgroup"/>
 							</li>
 
 							<li>
-								域：<select name="field" th:with="type=${@dict.getType('sys_normal_disable')}">
+								域：<select name="field" th:with="type=${@dict.getType('sys_rmq_field')}">
 								<option value="">所有</option>
 								<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
 							</select>
 							</li>
 
 							<li>
-								集群：<input type="text" name="clustor"/>
-							</li>
-
-							<li>
-								集群：<select name="clustor" th:with="type=${@dict.getType('sys_normal_disable')}">
+								集群：<select name="clustor" th:with="type=${@dict.getType('sys_rmq_clustor')}">
 								<option value="">所有</option>
 								<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
 							</select>
 							</li>
-
-							<li>
-								消费方war包：<input type="text" name="consumerWarName"/>
-							</li>
-
-							<li>
-								生产方war包：<input type="text" name="produerWarName"/>
-							</li>
-
 							<li>
 								主题持有者工号：<input type="text" name="topicHoldEmpCode"/>
 							</li>
+							<li>
+								消费组持有者工号：<input type="text" name="consumerHoldEmpCode"/>
+							</li>
+							<!--
+									<li>
+										消费方war包：<input type="text" name="consumerWarName"/>
+									</li>
 
-							<li>
-								主题持有者名字：<input type="text" name="topicHoldEmpName"/>
-							</li>
-<!--
-							<li>
-								生产方运维工号：<input type="text" name="produerDevopsEmpCode"/>
-							</li>
-							<li>
-								生产方运维名字：<input type="text" name="produerDevopsEmpName"/>
-							</li>
-							<li>
-								消费方运维工号：<input type="text" name="consumerDevopsEmpCode"/>
-							</li>
-							<li>
-								消费方运维名字：<input type="text" name="consumerDevopsEmpName"/>
+									<li>
+										生产方war包：<input type="text" name="produerWarName"/>
+
+									<li>
+										主题持有者名字：<input type="text" name="topicHoldEmpName"/>
+									</li>
+
+									<li>
+										生产方运维工号：<input type="text" name="produerDevopsEmpCode"/>
+									</li>
+									<li>
+										生产方运维名字：<input type="text" name="produerDevopsEmpName"/>
+									</li>
+									<li>
+										消费方运维工号：<input type="text" name="consumerDevopsEmpCode"/>
+									</li>
+									<li>
+										消费方运维名字：<input type="text" name="consumerDevopsEmpName"/>
 							</li>-->
 
 							<li class="select-time">
@@ -176,6 +169,16 @@
 				{
 					field : 'topicHoldEmpName', 
 					title : '主题持有者名字',
+					sortable: true
+				},
+				{
+					field : 'consumerHoldEmpCode',
+					title : '消费组持有者工号',
+					sortable: true
+				},
+				{
+					field : 'consumerHoldEmpName',
+					title : '消费组持有者名字',
 					sortable: true
 				},
 				{

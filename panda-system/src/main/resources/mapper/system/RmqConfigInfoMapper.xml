@@ -16,6 +16,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="produerWarName"    column="produer_war_name"    />
         <result property="topicHoldEmpCode"    column="topic_hold_emp_code"    />
         <result property="topicHoldEmpName"    column="topic_hold_emp_name"    />
+        <result property="consumerHoldEmpCode"    column="consumer_hold_emp_code"    />
+        <result property="consumerHoldEmpName"    column="consumer_hold_emp_name"    />
         <result property="produerDevopsEmpCode"    column="produer_devops_emp_code"    />
         <result property="produerDevopsEmpName"    column="produer_devops_emp_name"    />
         <result property="consumerDevopsEmpCode"    column="consumer_devops_emp_code"    />
@@ -25,23 +27,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 	
 	<sql id="selectRmqConfigInfoVo">
-        select id, topic, namesrv, cgroup, tag, field, clustor, consumer_war_name, produer_war_name, topic_hold_emp_code, topic_hold_emp_name, produer_devops_emp_code, produer_devops_emp_name, consumer_devops_emp_code, consumer_devops_emp_name, create_time, modify_time from rmq_config_info
+        select id, topic, namesrv, cgroup, tag, field, clustor, consumer_war_name, produer_war_name, topic_hold_emp_code, topic_hold_emp_name,consumer_hold_emp_code,consumer_hold_emp_name, produer_devops_emp_code, produer_devops_emp_name, consumer_devops_emp_code, consumer_devops_emp_name, create_time, modify_time from rmq_config_info
     </sql>
 	
     <select id="selectRmqConfigInfoList" parameterType="RmqConfigInfo" resultMap="RmqConfigInfoResult">
         <include refid="selectRmqConfigInfoVo"/>
         <where>  
             <if test="id != null "> and id = #{id}</if>
-             <if test="topic != null  and topic != '' "> and topic = #{topic}</if>
-             <if test="namesrv != null  and namesrv != '' "> and namesrv = #{namesrv}</if>
-             <if test="cgroup != null  and cgroup != '' "> and cgroup = #{cgroup}</if>
-             <if test="tag != null  and tag != '' "> and tag = #{tag}</if>
+             <if test="topic != null  and topic != '' "> and topic LIKE CONCAT('%',#{topic},'%') </if>
+             <if test="namesrv != null  and namesrv != '' "> and namesrv LIKE CONCAT('%',#{namesrv},'%')</if>
+             <if test="cgroup != null  and cgroup != '' "> and cgroup LIKE CONCAT('%',#{cgroup},'%')</if>
+             <if test="tag != null  and tag != '' "> and tag  LIKE CONCAT('%',#{tag},'%')</if>
              <if test="field != null  and field != '' "> and field = #{field}</if>
              <if test="clustor != null  and clustor != '' "> and clustor = #{clustor}</if>
              <if test="consumerWarName != null  and consumerWarName != '' "> and consumer_war_name = #{consumerWarName}</if>
              <if test="produerWarName != null  and produerWarName != '' "> and produer_war_name = #{produerWarName}</if>
              <if test="topicHoldEmpCode != null  and topicHoldEmpCode != '' "> and topic_hold_emp_code = #{topicHoldEmpCode}</if>
              <if test="topicHoldEmpName != null  and topicHoldEmpName != '' "> and topic_hold_emp_name = #{topicHoldEmpName}</if>
+            <if test="consumerHoldEmpCode != null  and consumerHoldEmpCode != '' "> and consumer_hold_emp_code = #{consumerHoldEmpCode}</if>
+            <if test="consumerHoldEmpName != null  and consumerHoldEmpName != '' "> and consumer_hold_emp_name = #{consumerHoldEmpName}</if>
              <if test="produerDevopsEmpCode != null  and produerDevopsEmpCode != '' "> and produer_devops_emp_code = #{produerDevopsEmpCode}</if>
              <if test="produerDevopsEmpName != null  and produerDevopsEmpName != '' "> and produer_devops_emp_name = #{produerDevopsEmpName}</if>
              <if test="consumerDevopsEmpCode != null  and consumerDevopsEmpCode != '' "> and consumer_devops_emp_code = #{consumerDevopsEmpCode}</if>
@@ -69,6 +73,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="produerWarName != null  and produerWarName != ''  ">produer_war_name,</if>
 			<if test="topicHoldEmpCode != null  and topicHoldEmpCode != ''  ">topic_hold_emp_code,</if>
 			<if test="topicHoldEmpName != null  and topicHoldEmpName != ''  ">topic_hold_emp_name,</if>
+            <if test="consumerHoldEmpCode != null  and consumerHoldEmpCode != ''  ">consumer_hold_emp_code,</if>
+            <if test="consumerHoldEmpName != null  and consumerHoldEmpName != ''  ">consumer_hold_emp_name,</if>
 			<if test="produerDevopsEmpCode != null  and produerDevopsEmpCode != ''  ">produer_devops_emp_code,</if>
 			<if test="produerDevopsEmpName != null  and produerDevopsEmpName != ''  ">produer_devops_emp_name,</if>
 			<if test="consumerDevopsEmpCode != null  and consumerDevopsEmpCode != ''  ">consumer_devops_emp_code,</if>
@@ -87,6 +93,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="produerWarName != null  and produerWarName != ''  ">#{produerWarName},</if>
 			<if test="topicHoldEmpCode != null  and topicHoldEmpCode != ''  ">#{topicHoldEmpCode},</if>
 			<if test="topicHoldEmpName != null  and topicHoldEmpName != ''  ">#{topicHoldEmpName},</if>
+            <if test="consumerHoldEmpCode != null  and consumerHoldEmpCode != ''  ">#{consumerHoldEmpCode},</if>
+            <if test="consumerHoldEmpName != null  and consumerHoldEmpName != ''  ">#{consumerHoldEmpName},</if>
 			<if test="produerDevopsEmpCode != null  and produerDevopsEmpCode != ''  ">#{produerDevopsEmpCode},</if>
 			<if test="produerDevopsEmpName != null  and produerDevopsEmpName != ''  ">#{produerDevopsEmpName},</if>
 			<if test="consumerDevopsEmpCode != null  and consumerDevopsEmpCode != ''  ">#{consumerDevopsEmpCode},</if>
@@ -109,6 +117,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="produerWarName != null  and produerWarName != ''  ">produer_war_name = #{produerWarName},</if>
             <if test="topicHoldEmpCode != null  and topicHoldEmpCode != ''  ">topic_hold_emp_code = #{topicHoldEmpCode},</if>
             <if test="topicHoldEmpName != null  and topicHoldEmpName != ''  ">topic_hold_emp_name = #{topicHoldEmpName},</if>
+            <if test="consumerHoldEmpCode != null  and consumerHoldEmpCode != ''  ">consumer_hold_emp_code = #{consumerHoldEmpCode},</if>
+            <if test="consumerHoldEmpName != null  and consumerHoldEmpName != ''  ">consumer_hold_emp_name = #{consumerHoldEmpName},</if>
             <if test="produerDevopsEmpCode != null  and produerDevopsEmpCode != ''  ">produer_devops_emp_code = #{produerDevopsEmpCode},</if>
             <if test="produerDevopsEmpName != null  and produerDevopsEmpName != ''  ">produer_devops_emp_name = #{produerDevopsEmpName},</if>
             <if test="consumerDevopsEmpCode != null  and consumerDevopsEmpCode != ''  ">consumer_devops_emp_code = #{consumerDevopsEmpCode},</if>

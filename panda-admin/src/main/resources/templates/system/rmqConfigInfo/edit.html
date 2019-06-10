@@ -8,30 +8,46 @@
         <form class="form-horizontal m" id="form-rmqConfigInfo-edit" th:object="${rmqConfigInfo}">
             <input id="id" name="id" th:field="*{id}"  type="hidden">
 			<div class="form-group">	
-				<label class="col-sm-3 control-label">主题：</label>
-				<div class="col-sm-8">
-					<input id="topic" name="topic" th:field="*{topic}" class="form-control" type="text">
-				</div>
+				<label class="col-sm-4 control-label"><span style="color: red; ">*</span>主题：</label>
+				<div class="col-sm-8"><div class="col-sm-8">
+					<input id="topic" name="topic" th:field="*{topic}" class="form-control" type="text" required>
+				</div></div>
+			</div>
+
+			<div class="form-group">	
+				<label class="col-sm-4 control-label"><span style="color: red; ">*</span>消费组：</label>
+				<div class="col-sm-8"><div class="col-sm-8">
+					<input id="cgroup" name="cgroup" th:field="*{cgroup}" class="form-control" type="text" required>
+				</div></div>
 			</div>
 			<div class="form-group">	
-				<label class="col-sm-3 control-label">namesrv：</label>
-				<div class="col-sm-8">
-					<input id="namesrv" name="namesrv" th:field="*{namesrv}" class="form-control" type="text">
-				</div>
-			</div>
-			<div class="form-group">	
-				<label class="col-sm-3 control-label">消费组：</label>
-				<div class="col-sm-8">
-					<input id="cgroup" name="cgroup" th:field="*{cgroup}" class="form-control" type="text">
-				</div>
-			</div>
-			<div class="form-group">	
-				<label class="col-sm-3 control-label">tag：</label>
-				<div class="col-sm-8">
+				<label class="col-sm-4 control-label">tag：</label>
+				<div class="col-sm-8"><div class="col-sm-8">
 					<input id="tag" name="tag" th:field="*{tag}" class="form-control" type="text">
-				</div>
+				</div></div>
 			</div>
-			<div class="form-group">	
+			<div class="form-group">
+				<label class="col-sm-4 control-label">域：</label>
+				<div class="col-sm-8"><div class="col-sm-8">
+					<div class="input-group" style="width: 100%">
+						<select name="field" class="form-control m-b" th:with="type=${@dict.getType('sys_rmq_field')}">
+							<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+						</select>
+					</div>
+				</div></div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-4 control-label">集群：</label>
+				<div class="col-sm-8"><div class="col-sm-8">
+					<div class="input-group" style="width: 100%">
+						<select name="clustor" class="form-control m-b" th:with="type=${@dict.getType('sys_rmq_clustor')}">
+							<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
+						</select>
+					</div>
+				</div></div>
+			</div>
+			<!--<div class="form-group">
 				<label class="col-sm-3 control-label">域：</label>
 				<div class="col-sm-8">
 					<input id="field" name="field" th:field="*{field}" class="form-control" type="text">
@@ -42,21 +58,51 @@
 				<div class="col-sm-8">
 					<input id="clustor" name="clustor" th:field="*{clustor}" class="form-control" type="text">
 				</div>
+			</div>-->
+			<div class="form-group">
+				<label class="col-sm-4 control-label"><span style="color: red; ">*</span>消费方war包：</label>
+				<div class="col-sm-8"><div class="col-sm-8">
+					<input id="consumerWarName" name="consumerWarName" th:field="*{consumerWarName}" class="form-control" type="text" required>
+				</div></div>
 			</div>
 			<div class="form-group">	
-				<label class="col-sm-3 control-label">消费方war包：</label>
+				<label class="col-sm-4 control-label"><span style="color: red; ">*</span>生产方war包：</label>
+				<div class="col-sm-8"><div class="col-sm-8">
+					<input id="produerWarName" name="produerWarName" th:field="*{produerWarName}" class="form-control" type="text" required>
+				</div></div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-4 control-label"><span style="color: red; ">*</span>主题持有者工号：</label>
+				<div class="col-sm-8" >
+					<div class="col-sm-8">
+						<input id="topicHoldEmpCode" th:field="*{topicHoldEmpCode}" autocomplete="off" placeholder="请输入主题持有者工号" name="topicHoldEmpCode" class="form-control" type="text"  required>
+					</div></div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label"><span style="color: red; ">*</span>主题持有者名字：</label>
 				<div class="col-sm-8">
-					<input id="consumerWarName" name="consumerWarName" th:field="*{consumerWarName}" class="form-control" type="text">
-				</div>
+					<div class="col-sm-8">
+						<input id="topicHoldEmpName" name="topicHoldEmpName" th:field="*{topicHoldEmpName}"  autocomplete="off" placeholder="请输入主题持有者名字" class="form-control" type="text">
+					</div></div>
 			</div>
-			<div class="form-group">	
-				<label class="col-sm-3 control-label">生产方war包：</label>
+			<div class="form-group">
+				<label class="col-sm-4 control-label"><span style="color: red; ">*</span>消费组持有者工号：</label>
+				<div class="col-sm-8" >
+					<div class="col-sm-8">
+						<input id="consumerHoldEmpCode" th:field="*{consumerHoldEmpCode}" autocomplete="off" placeholder="请输入主题持有者工号" name="consumerHoldEmpCode" class="form-control" type="text"  required>
+					</div></div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label"><span style="color: red; ">*</span>消费组持有者名字：</label>
 				<div class="col-sm-8">
-					<input id="produerWarName" name="produerWarName" th:field="*{produerWarName}" class="form-control" type="text">
-				</div>
+					<div class="col-sm-8">
+						<input id="consumerHoldEmpName" th:field="*{consumerHoldEmpName}" name="consumerHoldEmpName"  autocomplete="off" placeholder="请输入主题持有者名字" class="form-control" type="text">
+					</div></div>
 			</div>
+<!--
 			<div class="form-group">	
-				<label class="col-sm-3 control-label">主题持有者工号：</label>
+				<label class="col-sm-3 control-label"><span style="color: red; ">*</span>主题持有者工号：</label>
 				<div class="col-sm-8">
 					<input id="topicHoldEmpCode" name="topicHoldEmpCode" th:field="*{topicHoldEmpCode}" class="form-control" type="text">
 				</div>
@@ -66,32 +112,32 @@
 				<div class="col-sm-8">
 					<input id="topicHoldEmpName" name="topicHoldEmpName" th:field="*{topicHoldEmpName}" class="form-control" type="text">
 				</div>
-			</div>
+			</div>-->
 			<div class="form-group">	
-				<label class="col-sm-3 control-label">生产方运维工号：</label>
-				<div class="col-sm-8">
+				<label class="col-sm-4 control-label"><span style="color: red; ">*</span>生产方运维工号：</label>
+				<div class="col-sm-8"><div class="col-sm-8">
 					<input id="produerDevopsEmpCode" name="produerDevopsEmpCode" th:field="*{produerDevopsEmpCode}" class="form-control" type="text">
-				</div>
+				</div></div>
 			</div>
 			<div class="form-group">	
-				<label class="col-sm-3 control-label">生产方运维名字：</label>
-				<div class="col-sm-8">
+				<label class="col-sm-4 control-label">生产方运维名字：</label>
+				<div class="col-sm-8"><div class="col-sm-8">
 					<input id="produerDevopsEmpName" name="produerDevopsEmpName" th:field="*{produerDevopsEmpName}" class="form-control" type="text">
-				</div>
+				</div></div>
 			</div>
 			<div class="form-group">	
-				<label class="col-sm-3 control-label">消费方运维工号：</label>
-				<div class="col-sm-8">
+				<label class="col-sm-4 control-label"><span style="color: red; ">*</span>消费方运维工号：</label>
+				<div class="col-sm-8"><div class="col-sm-8">
 					<input id="consumerDevopsEmpCode" name="consumerDevopsEmpCode" th:field="*{consumerDevopsEmpCode}" class="form-control" type="text">
-				</div>
+				</div></div>
 			</div>
 			<div class="form-group">	
-				<label class="col-sm-3 control-label">消费方运维名字：</label>
-				<div class="col-sm-8">
+				<label class="col-sm-4 control-label">消费方运维名字：</label>
+				<div class="col-sm-8"><div class="col-sm-8">
 					<input id="consumerDevopsEmpName" name="consumerDevopsEmpName" th:field="*{consumerDevopsEmpName}" class="form-control" type="text">
-				</div>
+				</div></div>
 			</div>
-			<div class="form-group">	
+			<!--<div class="form-group">
 				<label class="col-sm-3 control-label">创建时间：</label>
 				<div class="col-sm-8">
 					<input id="createTime" name="createTime" th:field="*{createTime}" class="form-control" type="text">
@@ -102,7 +148,7 @@
 				<div class="col-sm-8">
 					<input id="modifyTime" name="modifyTime" th:field="*{modifyTime}" class="form-control" type="text">
 				</div>
-			</div>
+			</div>-->
 		</form>
     </div>
     <div th:include="include::footer"></div>
