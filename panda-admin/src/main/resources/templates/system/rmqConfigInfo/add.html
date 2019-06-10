@@ -10,7 +10,7 @@
 				<label class="col-sm-4 control-label"><span style="color: red; ">*</span>主题：</label>
 				<div class="col-sm-8">
 					<div class="col-sm-8">
-						<input name="topic" autocomplete="off" placeholder="请输入主题" class="form-control" type="text" maxlength="30" required>
+						<input id="topic" name="topic" autocomplete="off" placeholder="请输入主题" class="form-control" type="text" maxlength="30" required>
 					</div>
 				</div>
 			</div>
@@ -24,42 +24,44 @@
 				</div>
 			</div>
 
-			<div class="col-sm-6">
+
 				<div class="form-group">
 					<label class="col-sm-4 control-label">域：</label>
-					<div class="col-sm-8">
-						<div class="input-group" style="width: 70%">
-							<select name="field" class="form-control m-b" th:with="type=${@dict.getType('sys_user_sex')}">
+					<div class="col-sm-8"><div class="col-sm-8">
+						<div class="input-group" style="width: 100%">
+							<select name="field" class="form-control m-b" th:with="type=${@dict.getType('sys_rmq_field')}">
 								<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
 							</select>
 						</div>
-					</div>
+					</div></div>
 				</div>
-			</div>
 
-			<div class="col-sm-6">
+
+
 				<div class="form-group">
 					<label class="col-sm-4 control-label">集群：</label>
-					<div class="col-sm-8">
+					<div class="col-sm-8"><div class="col-sm-8">
 						<div class="input-group" style="width: 100%">
-							<select name="clustor" class="form-control m-b" th:with="type=${@dict.getType('sys_user_sex')}">
+							<select name="clustor" class="form-control m-b" th:with="type=${@dict.getType('sys_rmq_clustor')}">
 								<option th:each="dict : ${type}" th:text="${dict.dictLabel}" th:value="${dict.dictValue}"></option>
 							</select>
 						</div>
-					</div>
+					</div></div>
 				</div>
+
+			<div class="form-group">
+				<label class="col-sm-4 control-label"><span style="color: red; ">*</span>消费方war包：</label>
+				<div class="col-sm-8" >
+					<div class="col-sm-8">
+					<input id="consumerWarName" autocomplete="off" placeholder="请输入消费方war包" name="consumerWarName" class="form-control" type="text"  required>
+					</div></div>
 			</div>
-			<div class="form-group">	
-				<label class="col-sm-3 control-label"><span style="color: red; ">*</span>消费方war包：</label>
+			<div class="form-group">
+				<label class="col-sm-4 control-label"><span style="color: red; ">*</span>生产方war包：</label>
 				<div class="col-sm-8">
-					<input id="consumerWarName" name="consumerWarName" class="form-control" type="text" maxlength="30" required>
-				</div>
-			</div>
-			<div class="form-group">	
-				<label class="col-sm-3 control-label"><span style="color: red; ">*</span>生产方war包：</label>
-				<div class="col-sm-8">
-					<input id="produerWarName" name="produerWarName" class="form-control" type="text" maxlength="30" required>
-				</div>
+					<div class="col-sm-8">
+					<input id="produerWarName" name="produerWarName"  autocomplete="off" placeholder="请输入生产方war包" class="form-control" type="text" required>
+					</div></div>
 			</div>
 			<!--<div class="form-group">
 				<label class="col-sm-3 control-label">主题持有者工号：</label>
@@ -67,35 +69,35 @@
 					<input id="topicHoldEmpCode" name="topicHoldEmpCode" class="form-control" type="text">
 				</div>
 			</div>
-			<div class="form-group">	
+			<div class="form-group">
 				<label class="col-sm-3 control-label">主题持有者名字：</label>
 				<div class="col-sm-8">
 					<input id="topicHoldEmpName" name="topicHoldEmpName" class="form-control" type="text">
 				</div>
 			</div>-->
-			<div class="form-group">	
-				<label class="col-sm-3 control-label"><span style="color: red; ">*</span>生产方运维工号：</label>
-				<div class="col-sm-8">
-					<input id="produerDevopsEmpCode" name="produerDevopsEmpCode" class="form-control" type="text" maxlength="30" required>
-				</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label"><span style="color: red; ">*</span>生产方运维工号：</label>
+				<div class="col-sm-8"><div class="col-sm-8">
+					<input id="produerDevopsEmpCode"  autocomplete="off" placeholder="请输入生产方运维工号" name="produerDevopsEmpCode" class="form-control" type="text" maxlength="6" required>
+				</div></div>
 			</div>
-			<div class="form-group">	
-				<label class="col-sm-3 control-label">生产方运维名字：</label>
-				<div class="col-sm-8">
-					<input id="produerDevopsEmpName" name="produerDevopsEmpName" class="form-control" type="text" maxlength="30" required>
-				</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">生产方运维名字：</label>
+				<div class="col-sm-8"><div class="col-sm-8">
+					<input id="produerDevopsEmpName" autocomplete="off" placeholder="请输入生产方运维名字" name="produerDevopsEmpName" class="form-control" type="text" maxlength="30" required>
+				</div></div>
 			</div>
-			<div class="form-group">	
-				<label class="col-sm-3 control-label"><span style="color: red; ">*</span>消费方运维工号：</label>
-				<div class="col-sm-8">
-					<input id="consumerDevopsEmpCode" name="consumerDevopsEmpCode" class="form-control" type="text" maxlength="30" required>
-				</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label"><span style="color: red; ">*</span>消费方运维工号：</label>
+				<div class="col-sm-8"><div class="col-sm-8">
+					<input id="consumerDevopsEmpCode" autocomplete="off" placeholder="请输入消费方运维工号" name="consumerDevopsEmpCode" class="form-control" type="text" maxlength="6" required>
+				</div></div>
 			</div>
-			<div class="form-group">	
-				<label class="col-sm-3 control-label">消费方运维名字：</label>
-				<div class="col-sm-8">
-					<input id="consumerDevopsEmpName" name="consumerDevopsEmpName" class="form-control" type="text" maxlength="30" required>
-				</div>
+			<div class="form-group">
+				<label class="col-sm-4 control-label">消费方运维名字：</label>
+				<div class="col-sm-8"><div class="col-sm-8">
+					<input id="consumerDevopsEmpName" autocomplete="off" placeholder="请输入消费方运维名字" name="consumerDevopsEmpName" class="form-control" type="text" maxlength="30" required>
+				</div></div>
 			</div>
 			<!--<div class="form-group">
 				<label class="col-sm-3 control-label">创建时间：</label>
@@ -103,7 +105,7 @@
 					<input id="createTime" name="createTime" class="form-control" type="text">
 				</div>
 			</div>
-			<div class="form-group">	
+			<div class="form-group">
 				<label class="col-sm-3 control-label">修改时间：</label>
 				<div class="col-sm-8">
 					<input id="modifyTime" name="modifyTime" class="form-control" type="text">
